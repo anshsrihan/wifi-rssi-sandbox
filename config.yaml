@@ -1,0 +1,33 @@
+# WiFi RSSI Sandbox configuration
+
+polling_interval_sec: 1.0
+output_dir: data
+device_label: laptop  # label used in CSV when reading local laptop RSSI
+
+# Linux only: WiFi interface name (e.g. wlan0). null = auto-detect.
+interface: null
+
+# Path-loss calibration defaults (calibrate.py overwrites calibration_output)
+calibration:
+  d0_m: 1.0
+  distances_m: [1, 2, 3, 5, 8, 10]
+  sample_duration_sec: 10
+  sample_interval_sec: 0.5
+  output_file: calibration.json
+
+presence:
+  near_threshold_dbm: -55
+  far_threshold_dbm: -75
+  hysteresis_dbm: 3
+  gone_timeout_sec: 30
+
+filters:
+  moving_average_window: 5
+  ema_alpha: 0.3
+  kalman_process_noise: 1.0
+  kalman_measurement_noise: 4.0
+
+# Tier 2: passive monitor-mode sniffing — OFF by default.
+# Requires explicit opt-in, compatible hardware, and often elevated privileges.
+tier2:
+  enable_monitor_mode: false

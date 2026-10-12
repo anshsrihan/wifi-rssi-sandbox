@@ -1,0 +1,9 @@
+numpy>=1.24
+scipy>=1.10
+pandas>=2.0
+matplotlib>=3.7
+PyYAML>=6.0
+streamlit>=1.28
+
+# Tier 2 only — do NOT install unless you explicitly enable monitor mode:
+# scapy>=2.5
